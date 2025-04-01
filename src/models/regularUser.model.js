@@ -4,12 +4,21 @@ const mongoose = require('mongoose')
 const regularUserSchema = new mongoose.Schema({
     UserId:{
         type: mongoose.Schema.Types.ObjectId,
-        ref:'User'
+        ref:'User',
+        required: true,
     },
     age:{
         type:String,
         required:true,
         min:0
+    },
+    height:{
+        type: String,
+        required: true,
+    },
+    weight:{
+        type: String,
+        required: true,
     },
     gender:{
         type:String,
@@ -24,10 +33,48 @@ const regularUserSchema = new mongoose.Schema({
         type:[String],
         required:true
     },
-    dietaryPreference:{
+    goalWeight:{
+        type: String,
+        default: null
+    },
+    weightchangeRate:{
+        type: String,
+        default: null
+    },
+    dietaryPreference:{ 
         type: mongoose.Schema.Types.ObjectId,
         ref:'DietaryPreference',
         default:null
+    },
+    bmi:{
+        type: String,
+        default: ""
+    },
+    bmr:{
+        type: String,
+        default: ""
+    },
+    tdee:{
+        type: String,
+        default: ""
+    },
+    profileUrl:{
+        type:String,
+        default:'',
+        required: true
+    },
+    macros: {
+        protein: String,
+        carbs: String,
+        fats: String,
+        nonFiberCarbs:String,
+        fiber: String,
+        calories: String
+    },
+    goalCalories:{
+        type: String,
+        required: true,
+        default: ""
     }
 },{timestamps:true})
 

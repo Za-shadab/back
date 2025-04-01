@@ -10,6 +10,8 @@ app.post("/upload", upload.single("file"), async (req, res) => {
     const cloudinaryResponse = await uploadOnCloudinary(localFilePath);
 
     if (cloudinaryResponse) {
+        console.log("Inside upload route");
+        
         res.status(200).send({ url: cloudinaryResponse.url });
     } else {
         res.status(500).send({ error: "Failed to upload file" });

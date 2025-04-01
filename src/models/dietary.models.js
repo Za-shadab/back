@@ -9,18 +9,14 @@ const DietaryPrefernceSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref:'ClientUser'
     },
-    dietType:{
-        type: String,
-        required: true
-    },
     allergens:{
         type:[String],
-        required: true
+        default:[]
     },
-    restrictedIngredients:{
+    dietType:{
         type:[String],
         required: true
-    }
+    },
 })
 
 const DietaryPreference = mongoose.model('DietaryPreference', DietaryPrefernceSchema)

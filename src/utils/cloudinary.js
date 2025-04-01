@@ -1,6 +1,6 @@
-import {v2 as cloudinary} from "cloudinary" 
-import fs from "fs"
-import { env } from "process";
+const { v2: cloudinary } = require("cloudinary");
+const fs = require("fs");
+const { env } = require("process");
 
 // Configuration
 cloudinary.config({ 
@@ -10,7 +10,7 @@ cloudinary.config({
 });
 
 
-export const uploadOnCloudinary = async(localFilePath)=>{
+const uploadOnCloudinary = async(localFilePath)=>{
 try {
         if(!localFilePath) return null;
     
@@ -25,3 +25,4 @@ try {
     return null;
 }
 }
+module.exports = { uploadOnCloudinary };    

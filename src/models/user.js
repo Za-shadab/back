@@ -22,7 +22,25 @@ const UserSchema = new mongoose.Schema({
     },
     role:{
         type:String,
-        required:true
+        required:true,
+        enum: ['nutri_user', 'client_user', 'regular_user']
+    },
+    createdBy: { 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Nutritionist',
+        default: null 
+    },
+    isEmailVerified:{
+        type:Boolean,
+        default:false
+    },  
+    otp: {
+        type: String,
+        default: null
+    },
+    otpExpiry: {
+        type: Date,
+        default: null
     }
 },{timestamps: true})
 
